@@ -17,40 +17,32 @@ task(
 
   const fullNames = await hre.artifacts.getAllFullyQualifiedNames();
 
-  let errors = 0;
-
-  let processed = 0;
-  let imported = 0;
-  let duplicates = 0;
-  let ignored = 0;
+  const elements = {};
 
   await Promise.all(fullNames.map(async function (fullName) {
-    let { abi } = await hre.artifacts.readArtifact(fullName);
+    const { abi } = await hre.artifacts.readArtifact(fullName);
 
-    abi = abi.filter(function (el) {
-      return el.type == 'function' || el.type == 'event';
-    });
-
-    if (!abi.length) return;
-
-    try {
-      const { data } = await axios.post(API_ENDPOINT, { contract_abi: JSON.stringify(abi) });
-
-      processed += data.num_processed;
-      imported += data.num_imported;
-      duplicates += data.num_duplicates;
-      ignored += data.num_ignored;
-    } catch (e) {
-      errors++;
+    for (let element of abi) {
+      elements[JSON.stringify(element)] = element;
     }
   }));
 
-  console.log(`Processed ${ processed } selectors from ${ fullNames.length } ABIs`);
-  console.log(`Added ${ imported } selectors to database`);
-  console.log(`Found ${ duplicates } duplicates`);
-  console.log(`Ignored ${ ignored }`);
+  const compositeAbi = Object.values(elements).filter(function (el) {
+    return el.type === 'function' || el.type === 'event';
+  });
 
-  if (errors) {
+  if (compositeAbi.length === 0) {
+    throw new HardhatPluginError('no selectors found in local compilation artifacts');
+  }
+
+  try {
+    const { data } = await axios.post(API_ENDPOINT, { contract_abi: JSON.stringify(compositeAbi) });
+
+    console.log(`Processed ${ data.num_processed } selectors from ${ fullNames.length } ABIs`);
+    console.log(`Added ${ data.num_imported } selectors to database`);
+    console.log(`Found ${ data.num_duplicates } duplicates`);
+    console.log(`Ignored ${ data.num_ignored }`);
+  } catch (e) {
     throw new HardhatPluginError('one or more API requests failed');
   }
 });
