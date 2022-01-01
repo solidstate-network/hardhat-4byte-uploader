@@ -1,0 +1,32 @@
+{
+  "name": "@solidstate/hardhat-4byte-uploader",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Upload local function selectors to the Ethereum Selector Database",
+  "keywords": [
+    "hardhat",
+    "buidler",
+    "4byte",
+    "selector",
+    "function-selector",
+    "solidity",
+    "solc",
+    "smart-contracts",
+    "ethereum",
+    "blockchain",
+    "wow"
+  ],
+  "repository": "https://github.com/solidstate-network/hardhat-4byte-uploader",
+  "author": "Nick Barry",
+  "main": "index.js",
+  "peerDependencies": {
+    "hardhat": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.0.0",
+    "hardhat": "^2.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.24.0"
+  }
+}
