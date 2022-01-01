@@ -25,7 +25,13 @@ task(
   let ignored = 0;
 
   await Promise.all(fullNames.map(async function (fullName) {
-    const { abi } = await hre.artifacts.readArtifact(fullName);
+    let { abi } = await hre.artifacts.readArtifact(fullName);
+
+    abi = abi.filter(function (el) {
+      return el.type == 'function' || el.type == 'event';
+    });
+
+    if (!abi.length) return;
 
     try {
       const { data } = await axios.post(API_ENDPOINT, { contract_abi: JSON.stringify(abi) });
