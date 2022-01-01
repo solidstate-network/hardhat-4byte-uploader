@@ -38,10 +38,10 @@ task(
   try {
     const { data } = await axios.post(API_ENDPOINT, { contract_abi: JSON.stringify(compositeAbi) });
 
-    console.log(`Processed ${ data.num_processed } selectors from ${ fullNames.length } ABIs`);
+    console.log(`Processed ${ data.num_processed } unique items from ${ fullNames.length } ABIs`);
     console.log(`Added ${ data.num_imported } selectors to database`);
     console.log(`Found ${ data.num_duplicates } duplicates`);
-    console.log(`Ignored ${ data.num_ignored }`);
+    console.log(`Ignored ${ data.num_ignored } items`);
   } catch (e) {
     throw new HardhatPluginError('one or more API requests failed');
   }
