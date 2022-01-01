@@ -1,6 +1,6 @@
 {
   "name": "@solidstate/hardhat-4byte-uploader",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "description": "Upload local function selectors to the Ethereum Selector Database",
   "keywords": [
