@@ -19,17 +19,30 @@ task(
 
   let errors = 0;
 
+  let processed = 0;
+  let imported = 0;
+  let duplicates = 0;
+  let ignored = 0;
+
   await Promise.all(fullNames.map(async function (fullName) {
     const { abi } = await hre.artifacts.readArtifact(fullName);
 
     try {
-      const res = await axios.post(API_ENDPOINT, { contract_abi: JSON.stringify(abi) });
-      // TODO: aggregate output data and print before exit
-      console.log(res.data);
+      const { data } = await axios.post(API_ENDPOINT, { contract_abi: JSON.stringify(abi) });
+
+      processed += data.num_processed;
+      imported += data.num_imported;
+      duplicates += data.num_duplicates;
+      ignored += data.num_ignored;
     } catch (e) {
       errors++;
     }
   }));
+
+  console.log(`Processed ${ processed } selectors from ${ fullNames.length } ABIs`);
+  console.log(`Added ${ imported } selectors to database`);
+  console.log(`Found ${ duplicates } duplicates`);
+  console.log(`Ignored ${ ignored }`);
 
   if (errors) {
     throw new HardhatPluginError('one or more API requests failed');
