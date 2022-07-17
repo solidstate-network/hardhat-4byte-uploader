@@ -5,6 +5,8 @@ Calculate the function selectors found in all local contracts and upload them to
 ## Installation
 
 ```bash
+npm install --save-dev @solidstate/hardhat-4byte-uploader
+# or
 yarn add --dev @solidstate/hardhat-4byte-uploader
 ```
 
@@ -19,5 +21,7 @@ require('@solidstate/hardhat-4byte-uploader');
 Run the included Hardhat task manually:
 
 ```bash
+npx hardhat upload-selectors
+# or
 yarn run hardhat upload-selectors
 ```
