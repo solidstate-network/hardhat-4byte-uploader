@@ -1,13 +1,16 @@
-# Hardhat 4byte Uploader
+*This is a fork from [solidstate-network/hardhat-4byte-uploader](https://github.com/solidstate-network/hardhat-4byte-uploader)*
 
-Calculate the function selectors found in all local contracts and upload them to the [4byte Directory](https://www.4byte.directory/) Ethereum Signature Database.
+## Signatures uploaded
+- External methods
+- Events
+- Custom errors (treated as methods)
 
 ## Installation
 
 ```bash
-npm install --save-dev @solidstate/hardhat-4byte-uploader
+npm install --save-dev @axieinfinity/hardhat-4byte-uploader
 # or
-yarn add --dev @solidstate/hardhat-4byte-uploader
+yarn add --dev @axieinfinity/hardhat-4byte-uploader
 ```
 
 ## Usage
@@ -15,7 +18,7 @@ yarn add --dev @solidstate/hardhat-4byte-uploader
 Load plugin in Hardhat config:
 
 ```javascript
-require('@solidstate/hardhat-4byte-uploader');
+require('@axieinfinity/hardhat-4byte-uploader');
 ```
 
 Run the included Hardhat task manually:
