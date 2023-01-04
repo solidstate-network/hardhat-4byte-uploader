@@ -28,7 +28,14 @@ task(
   }));
 
   const compositeAbi = Object.values(elements).filter(function (el) {
-    return el.type === 'function' || el.type === 'event';
+    return el.type === 'function' || el.type === 'event' || el.type === 'error';
+  });
+
+  compositeAbi.map(function (el) {
+    if (el.type === 'error') {
+      el.type = 'function';
+      el.outputs = []
+    }
   });
 
   if (compositeAbi.length === 0) {
