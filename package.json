@@ -1,6 +1,6 @@
 {
-  "name": "@solidstate/hardhat-4byte-uploader",
-  "version": "1.0.2",
+  "name": "@axieinfinity/hardhat-4byte-uploader",
+  "version": "1.0.0",
   "license": "MIT",
   "description": "Upload local function selectors to the Ethereum Selector Database",
   "keywords": [
@@ -16,8 +16,8 @@
     "blockchain",
     "wow"
   ],
-  "repository": "github:solidstate-network/hardhat-4byte-uploader",
-  "author": "Nick Barry",
+  "repository": "github:axieinfinity-network/hardhat-4byte-uploader",
+  "author": "Nick Barry & Axie Infinity",
   "main": "index.js",
   "peerDependencies": {
     "hardhat": "^2.0.0"
