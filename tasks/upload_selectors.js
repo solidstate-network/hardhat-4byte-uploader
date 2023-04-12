@@ -32,6 +32,7 @@ task(
   });
 
   compositeAbi.forEach(function (el) {
+    // We convert all errors to 'function' type, since 4byte.directory not support ABIs that include errors and both types are encoded in the same way.
     if (el.type === 'error') {
       el.type = 'function';
       el.outputs = []
