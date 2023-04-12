@@ -31,7 +31,7 @@ task(
     return el.type === 'function' || el.type === 'event' || el.type === 'error';
   });
 
-  compositeAbi.map(function (el) {
+  compositeAbi.forEach(function (el) {
     if (el.type === 'error') {
       el.type = 'function';
       el.outputs = []
