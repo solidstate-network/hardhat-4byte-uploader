@@ -28,7 +28,15 @@ task(
   }));
 
   const compositeAbi = Object.values(elements).filter(function (el) {
-    return el.type === 'function' || el.type === 'event';
+    return el.type === 'function' || el.type === 'event' || el.type === 'error';
+  });
+
+  compositeAbi.forEach(function (el) {
+    // We convert all errors to 'function' type, since 4byte.directory not support ABIs that include errors and both types are encoded in the same way.
+    if (el.type === 'error') {
+      el.type = 'function';
+      el.outputs = []
+    }
   });
 
   if (compositeAbi.length === 0) {
