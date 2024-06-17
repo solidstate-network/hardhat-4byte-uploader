@@ -19,6 +19,10 @@
   "repository": "github:solidstate-network/hardhat-4byte-uploader",
   "author": "Nick Barry",
   "main": "index.js",
+  "scripts": {
+    "prepare": "husky",
+    "prettier": "prettier --write ."
+  },
   "peerDependencies": {
     "hardhat": "^2.0.0"
   },
@@ -26,8 +30,11 @@
     "axios": "^0.24.0"
   },
   "devDependencies": {
-    "eslint": "^7.0.0",
-    "hardhat": "^2.0.0"
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "hardhat": "^2.0.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
+    "prettier": "^3.3.2"
   },
   "publishConfig": {
     "access": "public"

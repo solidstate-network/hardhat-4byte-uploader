@@ -25,3 +25,17 @@ npx hardhat upload-selectors
 # or
 yarn run hardhat upload-selectors
 ```
+
+## Development
+
+Install dependencies via Yarn:
+
+```bash
+yarn install
+```
+
+Setup Husky to format code on commit:
+
+```bash
+yarn prepare
+```
