@@ -44,13 +44,6 @@ task(
       }
     });
 
-    if (compositeAbi.length === 0) {
-      throw new HardhatPluginError(
-        pluginName,
-        'no selectors found in local compilation artifacts',
-      );
-    }
-
     try {
       const { data } = await axios.post(API_ENDPOINT, {
         contract_abi: JSON.stringify(compositeAbi),
