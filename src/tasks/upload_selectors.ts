@@ -58,7 +58,7 @@ task(
     } catch (e) {
       throw new HardhatPluginError(
         pluginName,
-        'one or more API requests failed',
+        'failed to upload selectors to 4byte.directory',
       );
     }
   });
