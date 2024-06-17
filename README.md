@@ -18,6 +18,18 @@ Load plugin in Hardhat config:
 require('@solidstate/hardhat-4byte-uploader');
 ```
 
+Add configuration under the `fourByteUploader` key:
+
+| option         | description                                                  | default |
+| -------------- | ------------------------------------------------------------ | ------- |
+| `runOnCompile` | whether to automatically upload selectors during compilation | `false` |
+
+```javascript
+fourByteUploader: {
+  runOnCompile: true,
+}
+```
+
 Run the included Hardhat task manually:
 
 ```bash
