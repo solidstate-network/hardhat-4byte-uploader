@@ -37,7 +37,7 @@ task(
     });
 
     compositeAbi.forEach(function (el) {
-      // We convert all errors to 'function' type, since 4byte.directory not support ABIs that include errors and both types are encoded in the same way.
+      // We convert all errors to 'function' type, since 4byte.directory does not support ABIs that include errors and both types are encoded in the same way.
       if (el.type === 'error') {
         el.type = 'function';
         el.outputs = [];
@@ -52,7 +52,9 @@ task(
       console.log(
         `Processed ${data.num_processed} unique items from ${fullNames.length} ABIs`,
       );
-      console.log(`Added ${data.num_imported} selectors to database`);
+      console.log(
+        `Added ${data.num_imported} selectors to 4byte.directory database`,
+      );
       console.log(`Found ${data.num_duplicates} duplicates`);
       console.log(`Ignored ${data.num_ignored} items`);
     } catch (e) {
