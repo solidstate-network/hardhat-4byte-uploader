@@ -1,6 +1,8 @@
-const axios = require('axios');
-const { HardhatPluginError } = require('hardhat/plugins');
-const { TASK_COMPILE } = require('hardhat/builtin-tasks/task-names');
+import { name as pluginName } from '../../package.json';
+import axios from 'axios';
+import { TASK_COMPILE } from 'hardhat/builtin-tasks/task-names';
+import { task } from 'hardhat/config';
+import { HardhatPluginError } from 'hardhat/plugins';
 
 const API_ENDPOINT = 'https://www.4byte.directory/api/v1/import-abi/';
 
@@ -16,7 +18,7 @@ task(
 
     const fullNames = await hre.artifacts.getAllFullyQualifiedNames();
 
-    const elements = {};
+    const elements: { [key: string]: any } = {};
 
     await Promise.all(
       fullNames.map(async function (fullName) {
@@ -44,6 +46,7 @@ task(
 
     if (compositeAbi.length === 0) {
       throw new HardhatPluginError(
+        pluginName,
         'no selectors found in local compilation artifacts',
       );
     }
@@ -60,6 +63,9 @@ task(
       console.log(`Found ${data.num_duplicates} duplicates`);
       console.log(`Ignored ${data.num_ignored} items`);
     } catch (e) {
-      throw new HardhatPluginError('one or more API requests failed');
+      throw new HardhatPluginError(
+        pluginName,
+        'one or more API requests failed',
+      );
     }
   });
