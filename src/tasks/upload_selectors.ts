@@ -11,7 +11,7 @@ task(
   'Upload local function selectors to the Ethereum Selector Database',
 )
   .addFlag('noCompile', "Don't compile before running this task")
-  .setAction(async function (args, hre) {
+  .setAction(async (args, hre) => {
     if (!args.noCompile) {
       await hre.run(TASK_COMPILE);
     }
@@ -21,7 +21,7 @@ task(
     const elements: { [key: string]: any } = {};
 
     await Promise.all(
-      fullNames.map(async function (fullName) {
+      fullNames.map(async (fullName) => {
         const { abi } = await hre.artifacts.readArtifact(fullName);
 
         for (let element of abi) {
@@ -30,13 +30,13 @@ task(
       }),
     );
 
-    const compositeAbi = Object.values(elements).filter(function (el) {
+    const compositeAbi = Object.values(elements).filter((el) => {
       return (
         el.type === 'function' || el.type === 'event' || el.type === 'error'
       );
     });
 
-    compositeAbi.forEach(function (el) {
+    compositeAbi.forEach((el) => {
       // We convert all errors to 'function' type, since 4byte.directory does not support ABIs that include errors and both types are encoded in the same way.
       if (el.type === 'error') {
         el.type = 'function';
