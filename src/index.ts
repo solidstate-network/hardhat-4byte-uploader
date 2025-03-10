@@ -4,7 +4,7 @@ import { extendConfig } from 'hardhat/config';
 
 declare module 'hardhat/types/config' {
   export interface HardhatUserConfig {
-    fourByteUploader: { runOnCompile?: boolean };
+    fourByteUploader?: { runOnCompile?: boolean };
   }
 
   export interface HardhatConfig {
