@@ -1,4 +1,7 @@
-import { SelectorUploaderConfig, SelectorUploaderUserConfig } from './types.js';
+import type {
+  SelectorUploaderConfig,
+  SelectorUploaderUserConfig,
+} from './types.js';
 
 declare module 'hardhat/types/config' {
   export interface HardhatConfig {

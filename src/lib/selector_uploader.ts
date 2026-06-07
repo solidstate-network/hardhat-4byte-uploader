@@ -1,7 +1,7 @@
 import pkg from '../../package.json' with { type: 'json' };
 import axios from 'axios';
 import { HardhatPluginError } from 'hardhat/plugins';
-import { HookContext } from 'hardhat/types/hooks';
+import type { HookContext } from 'hardhat/types/hooks';
 
 const API_ENDPOINT = 'https://www.4byte.directory/api/v1/import-abi/';
 
