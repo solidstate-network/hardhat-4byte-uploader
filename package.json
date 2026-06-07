@@ -1,6 +1,6 @@
 {
   "name": "@solidstate/hardhat-selector-uploader",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Upload local function selectors to the Ethereum Selector Database",
   "keywords": [
     "hardhat",
